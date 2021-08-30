@@ -1,0 +1,26 @@
+@startuml Components
+
+' Long hand declaration of an element
+actor "iOs User" as iOsUser
+actor "Android User" as androidUser
+
+' Short hand declaration of an element
+[iOs App]
+[Android App]
+
+(API Gateway)
+[Lambda]
+[Dynamo DB]
+[Secrets Manager]
+
+' Relationships between elements
+iOsUser --> [iOs App]
+androidUser --> [Android App]
+[iOs App] -->  (API Gateway)
+[Android App] --> (API Gateway)
+
+(API Gateway) --> [Lambda]
+[Lambda] --> [Dynamo DB]
+[Lambda] --> [Secrets Manager]
+
+@enduml

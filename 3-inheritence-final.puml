@@ -1,0 +1,10 @@
+@startuml Derived
+
+!include 2-inheritence-base.puml
+
+[API Gateway]
+
+[iOs App] -->  [API Gateway]
+[Android App] --> [API Gateway]
+
+@enduml

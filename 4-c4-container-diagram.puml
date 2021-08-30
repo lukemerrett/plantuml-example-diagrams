@@ -1,0 +1,17 @@
+@startuml Basic Sample
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "Client")
+
+System_Boundary(application, "Application") {
+    Container(web_app, "Web Application", "Python, Flask", "A web application")
+    ContainerDb(database, "Database", "AWS RDS, Postgres", "Backing store for the application")
+
+    Rel(web_app, database, "Uses", "TCP/IP")
+}
+
+System_Ext(ref_api, "Reference API", "Returns look up")
+
+Rel(user, web_app, "Uses", "HTTPS")
+Rel_Right(web_app, ref_api, "Calls", "HTTPS")
+@enduml
