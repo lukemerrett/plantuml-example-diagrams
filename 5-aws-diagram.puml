@@ -1,0 +1,32 @@
+@startuml AWS Diagram
+
+!include <awslib/AWSCommon>
+!include <awslib/AWSSimplified.puml>
+!include <awslib/Compute/all.puml>
+!include <awslib/mobile/all.puml>
+!include <awslib/general/all.puml>
+!include <awslib/GroupIcons/all.puml>
+!include <awslib/Storage/all.puml>
+!include <awslib/ManagementAndGovernance/all.puml>
+!include <awslib/NetworkingAndContentDelivery/all.puml>
+!include <awslib/Database/all.puml>
+
+actor "iOs User" as iOsUser
+actor "Android User" as androidUser 
+ 
+[iOs App]
+[Android App]
+
+APIGateway(api_gateway, "Amazon API Gateway", "")
+Lambda(lambda, "Lambda Function", "")
+DynamoDB(dynamodb, "DynamoDB", "")
+
+iOsUser --> [iOs App]
+androidUser --> [Android App]
+[iOs App] -->  api_gateway
+[Android App] --> api_gateway
+ 
+api_gateway --> lambda
+lambda --> dynamodb
+
+@enduml
