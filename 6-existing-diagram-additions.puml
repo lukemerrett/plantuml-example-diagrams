@@ -1,0 +1,9 @@
+@startuml References
+
+' Import a diagram that already exists from a repository
+!include https://raw.githubusercontent.com/lukemerrett/plantuml-example-diagrams/main/1-component-diagram.puml
+
+' Attach a new component to it, showing how you can extend an existing diagram, even if from a different repo
+[Automated Tests] --> [iOs App]
+
+@enduml
